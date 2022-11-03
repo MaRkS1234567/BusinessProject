@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %} 
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+    <div class="centres">
+        <h1 id="h1" class="display-4 fw-normal text-center">Редактирование</h1><br>
+        <form method="post" class="date">
+            {% csrf_token %}
+
+            <label for="id_fullname"class="fs-5 text-muted mb-3">Введите ваше имя и фамилию:</label>
+            <p id="fullname">{{ form.fullname }}</p>
+
+            <label for="id_pnumber" class="fs-5 text-muted mb-3">Введите ваш номер телефона:</label>
+            <p id="pnumber">{{ form.pnumber }}</p>
+
+            <label for="startsdate" class="fs-5 text-muted mb-3">Выберите дату заселения:</label>
+            <p id="startdate">{{ form.startdate }}</p>
+
+            <label for="finishdate" class="fs-5 text-muted mb-3">Выберите дату выселения:</label>
+            <p id="finishdate">{{ form.finishdate }}</p>
+
+            <p class="fs-5 text-muted">Сумма вашего заказа:</p>
+            <p class="form-control text-left" id="price"></p>
+            
+            {{ error }}
+                <button class="btn btn-secondary" type="submit">Добавить</button>
+        </form>
+    </div>
+   
+{% endblock %}
+
+{% block my_scripts %}
+<script>
+    const priceEl = document.querySelector('#price');
+    const startDateEl = document.querySelector("#id_startdate");
+    const endDateEl = document.querySelector("#id_finishdate");
+
+    function displayPrice() {
+        const startDate = startDateEl.valueAsDate;
+        const endDate = endDateEl.valueAsDate;
+        
+        if (startDate === null || endDate === null) {
+            return;
+        }
+        
+        const diffMs = endDate.getTime() - startDate.getTime();
+        const diffDay = Math.ceil(diffMs / 1000 / 60 / 60 / 24);
+
+        const price = diffDay * 3700;
+
+        priceEl.innerText = price;
+        // getDate() getDay() getMonth() getFullYear() getTime()
+    }
+
+    startDateEl.addEventListener('change', displayPrice);
+    endDateEl.addEventListener('change', displayPrice);
+</script>
+{% endblock %}

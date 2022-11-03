@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %} 
+
+{% block title %}Ваш аккаунт{% endblock %}
+
+{% block content %}
+    <div>
+        <h1 class="display-4 fw-normal text-center mb-3">Ваш аккаунт</h1>
+        <h3 class="display-7 fw-normal text-center mb-3">Ваши брони:</h3>
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="bookings centres mb-3">   
+                    <h4 class="mb-3">Ваши имя и фамилия:</h4>
+                    <p class="fs-5 text-muted" id="_fullname">{{ booking.fullname }}</p>
+
+                    <h4 class="mb-3">Ваш номер телефона:</h4>
+                    <p class="fs-5 text-muted" id="_pnumber">{{ booking.pnumber }}</p>
+
+                    <h4 class="mb-3">Дата заселения:</h4>
+                    <p class="fs-5 text-muted" id="_startdate">{{ booking.startdate }}</p>
+
+                    <h4 class="mb-3">Дата выселения:</h4>
+                    <p class="fs-5 text-muted" id="_finishdate">{{ booking.finishdate }}</p>
+
+                    <h4 class="">Сумма вашего заказа:</h4>
+                    <p class="fs-5 text-muted" id="_price">{{ booking.price }}</p>
+                    <div class="d-flex">
+                        <a href="{% url 'update' booking.id %}" class="btn btn-secondary aleft">Редактировать</a>
+                        <a href="{% url 'delete' booking.id %}" class="btn btn-secondary aright">Удалить</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <div class="text-center my-2">
+                <button type="submit" class="btn btn-secondary">Выйти из аккаунта</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block my_scripts %}
+<script>
+    {% comment %} const _startDateEl = new Date(document.querySelector('#_startdate').textContent)
+    const _endDateEl = document.querySelector('#_finishdate')
+    const _priceEl = document.querySelector('#_price');
+
+    console.log(_startDateEl.getTime())
+
+    const _startDate = _startDateEl.getDate();
+    const _endDate = _endDateEl.getDate();
+    
+    const diffDay = _endDate - _startDate;
+
+    const price = diffDay * 3700;
+
+    _priceEl.innerText = price; {% endcomment %}
+</script>
+{% endblock %}
