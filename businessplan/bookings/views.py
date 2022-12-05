@@ -10,8 +10,6 @@ from django.http import JsonResponse
 def booking(request):
     error = ''
 
-
-
     if request.method == 'POST':
         form = BookingForm(request.POST)
         #create valid form for date

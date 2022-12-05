@@ -138,3 +138,7 @@ header {
   border: rgb(41, 103, 0);
   margin: auto;
 }
+
+.red {
+  color: red;
+}

@@ -55,7 +55,7 @@ def signout(request):
 
 
 def account(request):
-    bookings = Booking.objects.filter(user=request.user)
+    bookings = Booking.objects.filter(user=request.user).order_by('-id')
 
     for booking in bookings:
         price = 3700 * (booking.finishdate - booking.startdate).days

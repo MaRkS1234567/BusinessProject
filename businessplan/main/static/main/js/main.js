@@ -1,16 +1,17 @@
-// const priceEl = document.querySelector('#price');
-// const startDateEl = document.querySelector("#startdate");
-// const endDateEl = document.querySelector("#finishtdate");
+'use strict';
 
-// function getInputValue() {
-//     const startDate = startDateEl.asDate;
-//     const endDate = endDateEl.asDate;
 
-//     const diffMs = endDate.getTime() - startDate.getTime()
-//     const diffDay = Math.ceil(diffMs / 1000 / 60 / 60 / 24)
+class App extends React.Component {
+  render() {
+    return (
+      <h3 className="red">Hello mark</h3>
+    );
+  }
+}
 
-//     console.log(diffDay)
-//     // getDate() getDay() getMonth() getFullYear() getTime()
-// }
+let domContainer = document.querySelector('#mainapp');
+ReactDOM.render(<App />, domContainer);
 
-// endDateEl.addEventListener('change', getInputValue);
+// const domContainer = document.querySelector('#mainapp');
+// const root = ReactDOM.createRoot(domContainer);
+// root.render(App);
