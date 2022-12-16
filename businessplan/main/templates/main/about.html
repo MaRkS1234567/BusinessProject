@@ -1,9 +1,68 @@
-{% extends 'main/base.html' %} 
+{% extends 'main/base.html' %}
 
-{% block title %}Про нас{% endblock %}
+{% block title %}
+Отзывы
+{% endblock %}
 
 {% block content %}
-    <div>
-        <h1 class="display-4 fw-normal text-center">Про нас</h1>
+<h1 class="display-4 fw-normal text-center">О нас</h1><br>
+<h4 class="text-center">Сдесь вы можете найти наши контакты, а также посмотреть наши отзывы и оствить свой! </h4><br>
+<div class="text-center text-white rounded bg-dark">
+    <h4 style="padding: 30px; color: white;">Наша средняя оценка  {{ average }}★</h4>
+</div>
+<br>
+    {% if page %}
+        {% for review in page %}
+            <div class="text-white rounded bg-dark" style="padding: 20px 30px;">
+                <h3 style="">{{ review.user }}:</h3>
+                <h4 style="" class="fs-5 text-muted">{{ review.task }}</h4>
+                <h3 style="">Фото посетителей:</h3>
+                <img style="" src="{{ review.image.url }}" width="250" height="250"/><br>
+                <div class="d-flex">
+                    <h3>Оценка:</h3>
+                    <h4 style="padding: 5px; padding-bottom: 20px; margin-top: 2px;">{% for _ in review.stars_range %}★{% endfor %}</h4>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+        <div class="centres">
+            {% if page.has_previous %}
+                <a href="?page=1" class="btn btn-secondary my-2 mb-2">Первая страница</a>
+                <a href="?page={{ page.previous_page_number }}" class="btn btn-secondary my-2 mb-2">Предыдущщяя</a>
+            {% endif %}
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}" class="btn btn-secondary my-2 mb-2">Следующая</a>
+                <a href="?page={{ page.paginator.num_pages }}" class="btn btn-secondary my-2 mb-2">Поледняя страница</a>
+            {% endif %}
+            <span class="fs-5 text-muted">Страница {{ page.number }} из {{ page.paginator.num_pages }}</span><br><br>
+        </div>
+    {% else %}
+        <p class="fs-5 text-muted">Да, много сегодня отзывов</p>
+    {% endif %}
+    <div class="text-center">
+        {% if user.is_authenticated %}
+        <form method="post" class="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5 class="fs-5 text-muted">Ваш отзыв:</h5><br/>
+            {% for field in form %}
+              <div>
+                  {{ field }}<p1 class="fs-5 text-muted"></p1><br/>
+                  {% if field.help_text %}
+                    <p class="fs-5 text-muted">{{ field.help_text }}</p>
+                  {% endif %}
+                  {{ field.errors }}
+              </div>
+            {% endfor %}
+            <p class="">*пожалуйста прикрепляйте картинку в квадратном формате</p>
+            <button type="submit" class="btn btn-secondary me-2 mb-2">Добавить</button>
+    </form>
+    {% else %}
+        <p1 class="fs-5 text-muted">Вы не вошли в аккаунт</p1><br><br>
+        <a href="register" class="btn btn-secondary me-2 mb-2">Зарегестрируйся, и оставь свой отзыв</a>
+    {% endif %}
     </div>
+{% endblock %}
+
+{% block content2 %}
+
 {% endblock %}

@@ -8,7 +8,7 @@
         <h3 class="display-7 fw-normal text-center mb-3">Ваши брони:</h3>
         {% if bookings %}
             {% for booking in bookings %}
-                <div class="bookings centres mb-3">   
+                <div class="bookings mb-3 text-white rounded bg-dark">   
                     <h4 class="mb-3">Ваши имя и фамилия:</h4>
                     <p class="fs-5 text-muted" id="_fullname">{{ booking.fullname }}</p>
 
@@ -41,19 +41,6 @@
 
 {% block my_scripts %}
 <script>
-    {% comment %} const _startDateEl = new Date(document.querySelector('#_startdate').textContent)
-    const _endDateEl = document.querySelector('#_finishdate')
-    const _priceEl = document.querySelector('#_price');
 
-    console.log(_startDateEl.getTime())
-
-    const _startDate = _startDateEl.getDate();
-    const _endDate = _endDateEl.getDate();
-    
-    const diffDay = _endDate - _startDate;
-
-    const price = diffDay * 3700;
-
-    _priceEl.innerText = price; {% endcomment %}
 </script>
 {% endblock %}

@@ -1,65 +1,65 @@
 .btn-reset {
-    background: none;
-    border: none;
+  background: none;
+  border: none;
   }
   
-  .tab {
-     margin-left: 40px; 
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .pbtn-secondary {
-    color: black
-  }
-  
-  .centres {
-    text-align: center;
-  }
-  .message {
-    font-size: 18px;
-    font-weight:500;
-    border: 2px solid #dedede;
-    background-color: #ffffff;
-    color:rgb(0, 0, 0);
-    border-radius: 12px;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: right
-  }
-  .darker {
-    border-color: #ccc;
-    background-color: rgb(0, 0, 0);
-    color:white;
-    text-align: left
-  }
-  
-  html,
-  body {
-    height: 100%;
-  }
-  
-  #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-  }
-  
-  #root2 {
-    display: flex;
-    flex-direction: column;
-    min-height: 30%;
-  }
+.tab {
+  margin-left: 40px; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.pbtn-secondary {
+  color: black
+}
+
+.centres {
+  text-align: center;
+}
+.message {
+  font-size: 18px;
+  font-weight:500;
+  border: 2px solid #dedede;
+  background-color: #ffffff;
+  color:rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: right
+}
+.darker {
+  border-color: #ccc;
+  background-color: rgb(0, 0, 0);
+  color:white;
+  text-align: left
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#root2 {
+  display: flex;
+  flex-direction: column;
+  min-height: 30%;
+}
   
 main {
   flex-grow: 1;
   }
 
 body {
-    background: #d1d1d1;
+    background: white;
  }
 
 .aclass {
@@ -73,7 +73,7 @@ body {
 
 header {
   background: #ffffff;
-  border-bottom: 4px solid #dddddd;
+  border-bottom: 4px solid rgb(36, 36, 36);
 }
 .date {
   max-width: 300px;
@@ -93,34 +93,15 @@ header {
 }
 
 .bookings {
-  background: #ffffff;
   border-radius: 15px;
-  max-width: 300px;
   margin: auto;
   padding: 10px;
 }
 
-/* h4 {
-  color: #ffffff;
-} */
-
 .aright {
   float: right;
-  /* background: white;
-  color: #747474; */
   width: 150px;
-  border-radius: 15px;
   margin-left: 5px;
-}
-
-.aleft {
-  /* background: white;
-  color: #747474; */
-  border-radius: 15px;
-}
-
-.answer {
-
 }
 
 .yes_form {
@@ -139,6 +120,164 @@ header {
   margin: auto;
 }
 
-.red {
-  color: red;
+.img {
+  margin: 11px;
+  width: 130px;
+  height: 130px;
+  transition: all .6s ease;
+  
+}
+
+.img2 {
+  width: 185px;
+  height: 185px;
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+.img3 {
+  width: 130px;
+  height: 130px;
+  margin-right: 11px;
+  transition: all .6s ease;
+}
+
+.img4 {
+  width: 130px;
+  height: 130px;
+  margin-left: 11px;
+  transition: all .6s ease;
+}
+
+.img5 {
+  width: 185px;
+  height: 205px;
+  margin-right: 20px;
+}
+
+.text {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 17px;
+}
+
+.form {
+  max-width: 300px;
+  margin: auto;
+}
+
+footer {
+  height: 136px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.foot {
+  height: 4px;
+  width: 100%;
+  background: rgb(36, 36, 36)
+}
+
+.fleft {
+  width: 25%;
+  float: left;
+}
+
+.fmidle {
+  width: 50%;
+  float: center;
+  margin-top: 10px;
+}
+
+.fright {
+  width: 25%;
+  float: right;
+}
+
+.img:hover {
+  transform: scale(1.6);
+  border: 3px solid white;
+}
+
+.img3:hover {
+  transform: scale(1.6);
+  border: 3px solid white;
+}
+
+.img4:hover {
+  transform: scale(1.6);
+  border: 3px solid white;
+}
+
+.img10 {
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 180px;
+  height: 180px;
+}
+
+.img11 {
+  margin-left: 50px;
+  margin-right: 15px;
+  width: 180px;
+  height: 180px;
+}
+
+table, th, td {
+  border: 1px solid;
+  padding: 7px;
+}
+
+.p1 {
+  margin: 15px;
+}
+
+@media (min-width: 500px){
+
+}
+
+@media (max-width: 500px) {
+  .t {
+    min-width: 390px;
+  }
+  .img2 {
+    width: 0px;
+    height: 0px;
+  }
+  .img5 {
+    width: 0px;
+    height: 0px;
+  }
+  .img10 {
+    width: 0px;
+    height: 0px;
+  }
+  .img11 {
+    width: 0px;
+    height: 0px;
+  }
+  .img3 {
+    margin: 11px;
+    width: 130px;
+    height: 130px;
+    margin-top: 50px;
+  }
+  .img4 {
+    margin: 11px;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 50px;
+  }
+  .text2 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+  .top {
+    margin-top: 50px;
+  }
+  .bottom {
+    margin-bottom: 50px;
+  }
 }

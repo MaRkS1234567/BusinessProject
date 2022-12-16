@@ -1,12 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, get_user_model
-from django.views.generic import UpdateView
+from django.contrib.auth import login, logout
+from django.core.paginator import Paginator
+from django.db.models import Avg
 
 from bookings.models import Booking
-from .forms import AccountCreationForm, SigninForm
-
+from .forms import AccountCreationForm, SigninForm, ReviewForm
+from .models import Review
 
 
 def index(request):
@@ -14,7 +14,33 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'main/about.html')
+    reviews = Review.objects.order_by('-id')
+    paginator = Paginator(reviews, 5)
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+    average = round(Review.objects.aggregate(Avg('stars'))['stars__avg'])
+
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('login')
+
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
+            return redirect('about')
+        else:
+            return render(request, 'main/about.html', {'form': form, 'page': page, 'average': average})
+
+    form = ReviewForm()
+    context = {
+        'form': form,
+        'page': page,
+        'average': average
+    }
+
+    return render(request, 'main/about.html', context)
 
 
 def register(request):

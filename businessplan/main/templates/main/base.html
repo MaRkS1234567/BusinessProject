@@ -29,12 +29,26 @@
             {% block content %}{% endblock %}
         </div>
     </main>
+    <footer>
+        <div class="foot"></div>
+        <div class="d-flex">
+            <div class="fleft">
+                <img style="margin: 15px;" src="/static/main/img/logo1.jpeg" alt="twix" width="70" height="70">
+            </div>
+            <div class="text-center fmidle">
+                <p>© 2022 "Бабушкин бизнесс"</p>
+                <p>По вопросам обращаться на контактный телефон или почту:</p>
+                <p>Sharapof@mail.com   |   8-910-465-43-70</p>
+            </div>
+            <div class="fright">
+
+            </div>
+        </div>
+    </footer>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="{% static 'main/js/main.js' %}" type="text/babel"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <!-- <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script> -->
     {% block my_scripts %}
     {% endblock %}
 </body>
