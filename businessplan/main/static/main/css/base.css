@@ -196,17 +196,17 @@ footer {
 }
 
 .img:hover {
-  transform: scale(1.6);
+  transform: scale(1.1);
   border: 3px solid white;
 }
 
 .img3:hover {
-  transform: scale(1.6);
+  transform: scale(1.1);
   border: 3px solid white;
 }
 
 .img4:hover {
-  transform: scale(1.6);
+  transform: scale(1.1);
   border: 3px solid white;
 }
 
@@ -233,8 +233,22 @@ table, th, td {
   margin: 15px;
 }
 
-@media (min-width: 500px){
+@media (max-width: 1350px ) and (min-width: 1250px){
+  .delete {
+    width: 0px;
+    height: 0px;
+  }
+}
 
+@media (max-width: 1249px ) and (min-width: 501px){
+  .delete2 {
+    width: 0px;
+    height: 0px;
+  }
+  .delete {
+    width: 0px;
+    height: 0px;
+  }
 }
 
 @media (max-width: 500px) {
