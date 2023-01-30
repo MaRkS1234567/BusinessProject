@@ -5,8 +5,26 @@ from django.core.paginator import Paginator
 from django.db.models import Avg
 
 from bookings.models import Booking
-from .forms import AccountCreationForm, SigninForm, ReviewForm
+from .forms import SigninForm, ReviewForm
 from .models import Review
+
+from django.contrib.auth import forms  
+from django.shortcuts import redirect, render  
+from django.contrib import messages  
+from django.contrib.auth.forms import UserCreationForm  
+from .forms import CustomUserCreationForm   
+  
+def register(request):  
+    if request.POST == 'POST':  
+        form = CustomUserCreationForm()  
+        if form.is_valid():  
+            form.save()  
+    else:  
+        form = CustomUserCreationForm()  
+    context = {  
+        'form':form
+    }  
+    return render(request, 'main/register.html', context)  
 
 
 def index(request):
@@ -41,22 +59,6 @@ def about(request):
     }
 
     return render(request, 'main/about.html', context)
-
-
-def register(request):
-    if request.method == 'POST':
-        form = AccountCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, f'Вы успешно вошли в аккакнт,{form.data["username"]}!')
-            return redirect('login')
-        return render(request, 'main/register.html', {'form': form})
-    form = AccountCreationForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'main/register.html', context)
 
 
 def signin(request):

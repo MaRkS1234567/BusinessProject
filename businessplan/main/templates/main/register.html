@@ -7,19 +7,32 @@
 {% block content %}
     <div class="text-center">
         <h1 class="display-4 fw-normal text-center">Зарегистрируйтесь</h1><br>
-        <form method="POST" class ="fs-5 text-muted centres date">
-            {% csrf_token %}
-            <label for="username" class="fs-5 text-muted mb-3">Введите ваш логин:</label>
-            <p id="username">{{ form.username }}</p>
-            <label for="password1" class="fs-5 text-muted mb-3">Введите ваш пароль:</label>
-            <p id="password1">{{ form.password1 }}</p>
-            <label for="password2" class="fs-5 text-muted mb-3">Повторите ваш пароль:</label>
-            <p id="password2">{{ form.password2 }}</p>
-            {{ form.error }}
-            <button type="submit" class="btn btn-secondary me-2 mb-2">Зарегистрироваться</button>
-        </form><br>
-        <p1 class="fs-5 text-muted">Вы уже зарегистрированны?</p1><br><br>
-        <a href="login" class="btn btn-secondary me-2 mb-2">Войти</a>
+        <div class = "login">  
+  
+            {% if messages %}  
+                <ul>   
+                    {% for message in messages %}  
+                        <li>{{ message }}</li>  
+                        {% endfor %}  
+                </ul>   
+            {% endif %}
+          
+                 <form method="post" >  
+                     {% csrf_token %}      
+                        <p class="fs-5 text-muted">Введите ваш логин:</p>
+                        {{ form.username }}<br>
+                        <p class="fs-5 text-muted">Введите ваш пароль:</p>
+                        {{ form.password1 }}<br>
+                        <p class="fs-5 text-muted">Повторите ваш пароль:</p>
+                        {{ form.password2 }}<br>
+                        <p class="fs-5 text-muted">Введите ваш email:</p>
+                        {{ form.email }}  <br>
+                        {% if error %}
+                            {{ form.error }} 
+                        {% endif %}
+                        <input type="submit" name="submit" value="Register" class="btn btn-secondary me-2 mb-2" />
+                 </form>  
+             </div>  
     </div>
 {% endblock %}
 

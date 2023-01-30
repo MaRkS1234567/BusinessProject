@@ -229,8 +229,9 @@ table, th, td {
   padding: 7px;
 }
 
-.p1 {
-  margin: 15px;
+.login {
+  max-width: 300px;
+  margin: auto;
 }
 
 @media (max-width: 1350px ) and (min-width: 1250px){
@@ -295,3 +296,5 @@ table, th, td {
     margin-bottom: 50px;
   }
 }
+
+
